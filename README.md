@@ -12,6 +12,14 @@ DeepSeek Harness Web GUI 的皮肤切换插件：在设置界面新增「皮肤�
 
 ## 安装
 
+### 从 npm 安装（推荐）
+
+```sh
+dsh plugin --profile web add dsh-skin-switcher
+```
+
+### 从 GitHub 仓库安装（改代码调试）
+
 ```sh
 # 1. 克隆本仓库
 git clone https://github.com/zhtx2024/dsh-skin-switcher.git
@@ -25,7 +33,7 @@ dsh plugin --profile web add link:<克隆路径>/dsh-skin-switcher
 ## 卸载
 
 ```sh
-dsh plugin --profile web remove @dsh-local/dsh-skin-switcher
+dsh plugin --profile web remove dsh-skin-switcher
 ```
 
 卸载后如仍残留 `~/.dsh/cordis.patch.yml` 中的 managed section，可手动删除

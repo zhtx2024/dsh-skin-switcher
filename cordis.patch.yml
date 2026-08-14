@@ -1,4 +1,4 @@
 # dsh-skin-switcher bundle patch: inserts the skin switcher into the web plugin roster.
 - insert:
     - id: ui-skin-switcher
-      name: '@dsh-local/dsh-skin-switcher'
+      name: 'dsh-skin-switcher'

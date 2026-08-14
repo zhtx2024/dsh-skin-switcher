@@ -1,5 +1,5 @@
 {
-  "name": "@dsh-local/dsh-skin-switcher",
+  "name": "dsh-skin-switcher",
   "description": "DSH Web GUI 皮肤切换器：在设置界面列出已安装的皮肤并提供一键切换按钮。切换通过 ~/.dsh/cordis.patch.yml managed section 实现，DSH 配置监视器热重载，无需重启服务器。",
   "version": "0.1.0",
   "type": "module",
@@ -8,6 +8,9 @@
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dsh": {
     "bundle": {
