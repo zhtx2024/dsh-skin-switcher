@@ -5,10 +5,10 @@ DeepSeek Harness Web GUI 的皮肤切换插件：在设置界面新增「皮肤�
 ## 特性
 
 - **设置界面内切换**：官方设置面板新增「皮肤」页（`settings.section`），已安装皮肤自动列出，无需改代码
+- **统一管理所有皮肤**：自动发现 profile 中所有 `dsh-client-ui-skin-*` 皮肤包（支持任意 npm scope，如 `@dsh-external/dsh-client-ui-skin-maid-atelier`），以及 dsh-web-ui 的 `dsh-skins` 聚合载体（qq98 / ths / xp / minecraft / blue-fantasy / whale-song / trading / dragon-heir / miku 等）
 - **热切换，无需重启**：切换写入 `~/.dsh/cordis.patch.yml` 的 managed section（原子重写），DSH 配置监视器数秒内热重载，页面自动刷新生效
 - **一键恢复默认**：「恢复默认」回到官方原版外观
-- **自动发现**：扫描 web profile 中所有 `dsh-client-ui-skin-*` 皮肤包（支持任意 npm scope，如 `@dsh-external/dsh-client-ui-skin-maid-atelier`），新增皮肤即刻出现在列表
-- **兼容 bundle-wired 皮肤**：经 `dsh plugin add` 安装（`dsh.profile.bundles`）的皮肤与 home-layer insert 皮肤都能正确切换
+- **单一管理权威**：自动禁用 dsh-web-ui 自带的皮肤中心（`ui-skin-center`），避免两个管理器写入冲突的配置
 
 ## 安装
 
@@ -49,8 +49,9 @@ dsh plugin --profile web remove dsh-skin-switcher
 ### 皮肤切换协议
 
 - 非激活皮肤 → 写入 `- id: <wiringId>` + `disabled: true`（DSH 官方 loader patch 语法）
-- 激活皮肤（bundle-wired）→ 不写行，解除禁用即恢复
-- 激活皮肤（未 bundle-wired）→ 写入 `insert` 行
+- 激活皮肤（bundle-wired，即其包名在 `dsh.profile.bundles` 中）→ 不写行，解除禁用即恢复
+- 激活皮肤（未 bundle-wired，如 dsh-skins 载体中的皮肤）→ 自动在 profile node_modules 建链接并写入 `insert` 行
+- 皮肤中心（`ui-skin-center`）→ 恒定写入 `disabled: true`，保证本插件是唯一的管理权威
 - managed section 恒为合法 YAML 数组（无行时写 `[]`），保证 patch 文件始终可被 DSH 解析
 
 ## 适配自己的皮肤
