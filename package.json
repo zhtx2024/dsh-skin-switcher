@@ -28,5 +28,17 @@
     "README.md",
     "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhtx2024/dsh-skin-switcher.git"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skin",
+    "theme",
+    "plugin",
+    "webui"
+  ],
   "license": "BSD-3-Clause"
 }

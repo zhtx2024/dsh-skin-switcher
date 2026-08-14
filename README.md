@@ -14,7 +14,7 @@ DeepSeek Harness Web GUI 的皮肤切换插件：在设置界面新增「皮肤�
 
 ```sh
 # 1. 克隆本仓库
-git clone https://github.com/<owner>/dsh-skin-switcher.git
+git clone https://github.com/zhtx2024/dsh-skin-switcher.git
 
 # 2. 安装进 web profile
 dsh plugin --profile web add link:<克隆路径>/dsh-skin-switcher
