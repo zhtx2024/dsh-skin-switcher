@@ -2,6 +2,19 @@
 
 本文件记录 dsh-skin-switcher 的用户可见变更。格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.3.0] - 2026-08-17
+
+### 修复
+
+- 状态接口响应显式声明 `Cache-Control: no-store`，客户端轮询请求加 `cache: "no-store"`，避免浏览器或中间层缓存旧皮肤状态导致切换后状态页与实际不符
+- 激活皮肤 id 的 `ui-skin-` 前缀剥离改用 `.slice('ui-skin-'.length)`：此前 `.replace()` 只替换首次出现，皮肤 id 本身以 `ui-skin-` 开头时会残留前缀导致状态判定错误
+
+### 工程
+
+- 新增 GitHub Actions CI（`node --check` 语法检查 + `npm pack --dry-run` 打包验证）
+- 新增 `docs/architecture.md`（数据流 / 关键决策 / API 协议 / 皮肤形态）、`CONTRIBUTING.md` 与 issue/PR 模板
+- `package.json` 补齐 `engines`（node >=18）、`bugs`、`homepage` 与 `scripts`（check / prepack）
+
 ## [0.2.1] - 2026-08-14
 
 ### 新增
@@ -28,6 +41,7 @@
 - 切换写入 `~/.dsh/cordis.patch.yml` 的 managed section（原子重写），DSH 配置监视器数秒内热重载，无需重启服务器
 - 支持任意 npm scope 下名字匹配 `dsh-client-ui-skin-*` 的皮肤包（如 `@dsh-external/dsh-client-ui-skin-maid-atelier`）
 
+[0.3.0]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/zhtx2024/dsh-skin-switcher/releases/tag/v0.1.0
