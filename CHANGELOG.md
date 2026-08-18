@@ -2,6 +2,12 @@
 
 本文件记录 dsh-skin-switcher 的用户可见变更。格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.3.1] - 2026-08-18
+
+### 修复
+
+- 皮肤中心禁用行 id 不再硬编码 `ui-skin-center`：改为扫描 profile 的 bundle patch，禁用所有指向 `dsh-client-ui-skin-center` 包的行。dsh-web-ui 0.1.20 起聚合行改名 `web-ui-skin-center`，旧写法会失效（皮肤中心保持启用）并产生 "entry ui-skin-center not found" 警告；发现失败时回退到旧 id 兜底
+
 ## [0.3.0] - 2026-08-17
 
 ### 修复
