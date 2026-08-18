@@ -2,6 +2,12 @@
 
 本文件记录 dsh-skin-switcher 的用户可见变更。格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.3.2] - 2026-08-18
+
+### 修复
+
+- 管理段不再禁用未组合的皮肤行：只对 bundle-wired 或 bundle patch 已插入的皮肤行写 `disabled: true`。此前对所有已安装皮肤写禁用行，未组合的皮肤（如 dsh-skins 载体内的皮肤）会产生 "entry ui-skin-* not found" 警告
+
 ## [0.3.1] - 2026-08-18
 
 ### 修复

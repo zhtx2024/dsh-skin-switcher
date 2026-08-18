@@ -48,7 +48,7 @@ dsh plugin --profile web remove dsh-skin-switcher
 
 ### 皮肤切换协议
 
-- 非激活皮肤 → 写入 `- id: <wiringId>` + `disabled: true`（DSH 官方 loader patch 语法）
+- 非激活皮肤 → 仅对「已组合」的皮肤写入 `- id: <wiringId>` + `disabled: true`（DSH 官方 loader patch 语法）：bundle-wired 的皮肤，或 bundle patch 已插入其行的皮肤；仅安装而未组合的皮肤不写行，避免 "entry not found" 警告
 - 激活皮肤（bundle-wired，即其包名在 `dsh.profile.bundles` 中）→ 不写行，解除禁用即恢复
 - 激活皮肤（未 bundle-wired，如 dsh-skins 载体中的皮肤）→ 自动在 profile node_modules 建链接并写入 `insert` 行
 - 皮肤中心 → 从 profile bundle patch 中发现其实际行 id（如 `ui-skin-center` / `web-ui-skin-center`），恒定写入 `disabled: true`，保证本插件是唯一的管理权威
