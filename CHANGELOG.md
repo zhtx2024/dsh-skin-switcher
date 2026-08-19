@@ -2,6 +2,19 @@
 
 本文件记录 dsh-skin-switcher 的用户可见变更。格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.4.0] - 2026-08-19
+
+### 新增
+
+- 适配皮肤中心 v2 资产引擎（`@linxin666/dsh-client-ui-skin-center` >= 0.2.x）：发现其内置 `skins/` 与用户目录 `~/.dsh/skins`（`DSH_SKINS_HOME` 可覆盖）中的 v2 皮肤（`skinManifestVersion: 2`），皮肤页恢复列出全部内置皮肤
+- v2 世界不再禁用皮肤中心：v2 中心是资产引擎（读写 `~/.dsh/skin-center-active.json`，不写 patch），与切换器不再冲突——切换器写激活文件，中心在每次页面加载时应用
+- 同 id 的旧版皮肤包与 v2 资产合并为一条：以 v2 资产为准，旧 wiring 行恒保持禁用，两套机制不叠加
+- 启动时一次性迁移：旧版活跃皮肤若存在 v2 孪生，自动迁移到 v2 激活文件；旧版写下的 `web-ui-skin-center disabled: true` 行自动解除
+
+### 修复
+
+- 无皮肤中心引擎时不再发现或展示用户目录的 v2 资产（没有引擎应用的资产不可切换，避免静默失效）
+
 ## [0.3.2] - 2026-08-18
 
 ### 修复
@@ -53,6 +66,9 @@
 - 切换写入 `~/.dsh/cordis.patch.yml` 的 managed section（原子重写），DSH 配置监视器数秒内热重载，无需重启服务器
 - 支持任意 npm scope 下名字匹配 `dsh-client-ui-skin-*` 的皮肤包（如 `@dsh-external/dsh-client-ui-skin-maid-atelier`）
 
+[0.4.0]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.3.2...v0.4.0
+[0.3.2]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.3.1...v0.3.2
+[0.3.1]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/zhtx2024/dsh-skin-switcher/compare/v0.1.0...v0.2.0

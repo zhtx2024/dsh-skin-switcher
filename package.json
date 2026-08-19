@@ -1,7 +1,7 @@
 {
   "name": "dsh-skin-switcher",
   "description": "DSH Web GUI 皮肤切换器：在设置界面列出已安装的皮肤并提供一键切换按钮。切换通过 ~/.dsh/cordis.patch.yml managed section 实现，DSH 配置监视器热重载，无需重启服务器。",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -43,7 +43,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js && node scripts/verify-patch.mjs",
+    "check": "node --check lib/index.js && node --check lib/client.js && node scripts/verify-patch.mjs && node scripts/v2-smoke.mjs",
     "prepack": "npm run check"
   },
   "keywords": [
